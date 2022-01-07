@@ -474,6 +474,7 @@ To restart docker
 sudo systemctl restart docker
 ------------------------------------------------
 To run image in docker 
+ya native image ko run karna ka tarika ha
 docker run -i --rm -p 8080:8080 quarkus/ahdpapi/imagename
 ---------------------------------------------------------- 
 
