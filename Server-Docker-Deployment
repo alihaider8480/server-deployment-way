@@ -1,4 +1,5 @@
 Server pa login
+	    serverName
 	ssh admins@ipaddress
 	
 sudo apt update 
