@@ -372,6 +372,7 @@ docker exec -it db2 bash
 su - db2inst1
 passwd
 
+DOCKER-compose VS Docker Swarm ma farqaq dakho
 
 -------------------------------------------------
 docker permision error on native image 
