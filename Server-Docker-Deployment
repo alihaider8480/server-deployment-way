@@ -1,0 +1,483 @@
+Server pa login
+	ssh admins@ipaddress
+	
+sudo apt update 
+sudo apt upgrade
+
+sudo nano/etc/apt/apt.conf
+
+Acquire::http::proxy "";
+Acquire::https::proxy "";
+Acquire::ftp::proxy "";
+Acquire::socks::proxy "";
+
+Press clt+X and the Y and press Enter
+
+
+sudo apt update 
+sudo apt upgrade
+
+NOW install Softwares using apt:
+
+sudo apt install softwareName;
+sudo apt install default-jdk;
+
+
+apt list --installed     ----------> Run command  to list all installed packages on Ubuntu
+git --version            ----------> You can test if git is successfully installed  
+java -version            ----------> You can test if java is successfully installed
+mvn --version            ----------> You can test if meaven is successfully installed
+
+for Setting Up Quarkus Use the command below:
+
+mvn io.quarkus:quarkus-maven-plugin:1.13.6.Final:create \
+    -DprojectGroupId=org.acme \
+    -DprojectArtifactId=getting-started \
+    -DclassName="org.acme.getting.started.GreetingResource" \
+    -Dpath="/hello"
+cd getting-started
+
+for Running the quarkus application use the command:
+./mvnw compile quarkus:dev:
+
+for Running the quarkus application use the command:(ON Terminal)
+curl -w "\n" http://localhost:8080/hello/greeting/quarkus
+
+
+Installing MySQL Docker Container
+sudo docker pull mysql
+
+docker run -p 3306:3306 -e MYSQL_ROO_PASSWORD=example -v psw-db:/var/lib/mysql
+
+
+Agroalâ€™ is the datasource and connection pool configuration management extension used in Quarkus for JDBC programs.
+It is a modern connection pool implementation and integrates well with transaction, security and other systems of Quarkus.
+
+[Service]
+Environment="HTTP_PROXY=http://myproxy.hostname:8080"
+Environment="HTTPS_PROXY=https://myproxy.hostname:8080/"
+Environment="NO_PROXY="localhost,127.0.0.0/8,::1"
+
+
+
+mvn io.quarkus:quarkus-maven-plugin:1.13.6.Final:create \
+    -DprojectGroupId=org.acme \
+    -DprojectArtifactId=vehicle-management-db \
+    -DclassName="org.acme.getting.started.GreetingResource" \
+    -Dpath="/hello"
+
+
+
+
+
+
+
+
+
+
+
+
+quarkus.datasource.users.driver=com.mysql.cj.jdbc.driver
+quarkus.datasource.users.url=jdbc:mysql://localhost/review_management
+quarkus.datasource.users.username=root
+quarkus.datasource.users.password=dell123
+quarkus.datasource.users.min-size=0
+quarkus.datasource.users.min-size=11
+quarkus.datasource.db-kind=mysql
+
+
+-------------------------------------------
+
+
+package org.acme.getting.started;
+
+import javax.enterprise.context.ApplicationScoped;
+
+
+@ApplicationScoped
+@Entity
+@Table(name = "users")
+public class Product_Pojo
+{
+    
+    private int product_id;
+    private String prodduct_name;
+    private String clint_reSview_name;
+    
+    private String review_date;
+
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
+    }
+
+    public String getProdduct_name() {
+        return prodduct_name;
+    }
+
+    public void setProdduct_name(String prodduct_name) {
+        this.prodduct_name = prodduct_name;
+    }
+
+    public String getClint_reSview_name() {
+        return clint_reSview_name;
+    }
+
+    public void setClint_reSview_name(String clint_reSview_name) {
+        this.clint_reSview_name = clint_reSview_name;
+    }
+
+    public String getReview_date() {
+        return review_date;
+    }
+
+    public void setReview_date(String review_date) {
+        this.review_date = review_date;
+    }
+
+
+
+    
+}
+
+
+
+
+--------------------------------------------
+
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.acme</groupId>
+  <artifactId>product-review</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <properties>
+    <compiler-plugin.version>3.8.1</compiler-plugin.version>
+    <maven.compiler.parameters>true</maven.compiler.parameters>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <quarkus-plugin.version>1.13.6.Final</quarkus-plugin.version>
+    <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
+    <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
+    <quarkus.platform.version>1.13.6.Final</quarkus.platform.version>
+    <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+  </properties>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>${quarkus.platform.group-id}</groupId>
+        <artifactId>${quarkus.platform.artifact-id}</artifactId>
+        <version>${quarkus.platform.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-arc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-junit5</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+  <dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-hibernate-orm-panache</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-hibernate-orm</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-hibernate-validator</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-jdbc-mysql</artifactId>
+  </dependency>
+</dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-maven-plugin</artifactId>
+        <version>${quarkus-plugin.version}</version>
+        <extensions>true</extensions>
+        <executions>
+          <execution>
+            <goals>
+              <goal>build</goal>
+              <goal>generate-code</goal>
+              <goal>generate-code-tests</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${compiler-plugin.version}</version>
+        <configuration>
+          <parameters>${maven.compiler.parameters}</parameters>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${surefire-plugin.version}</version>
+        <configuration>
+          <systemPropertyVariables>
+            <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+            <maven.home>${maven.home}</maven.home>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>native</id>
+      <activation>
+        <property>
+          <name>native</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>${surefire-plugin.version}</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>integration-test</goal>
+                  <goal>verify</goal>
+                </goals>
+                <configuration>
+                  <systemPropertyVariables>
+                    <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
+                    <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                    <maven.home>${maven.home}</maven.home>
+                  </systemPropertyVariables>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+      <properties>
+        <quarkus.package.type>native</quarkus.package.type>
+      </properties>
+    </profile>
+  </profiles>
+</project>
+
+
+
+
+for docker image installation from other's coumputer file
+docker save imagename -o file.tar  /save from other's pc
+docker load < file.tar 	    /load in actual pc
+
+FOR PULLING
+docker-compose up
+
+
+
+TCL commands - 
+Commit - saves data permanently
+Rollback - undo the data. But the data should not be committed. Then only rollback command will execute it's function.
+Savepoint - saves the data temporarily.
+
+
+-if -Pnative image having bad gateway error then run this
+docker pull quay.io/quarkus/ubi-quarkus-native-image:21.3-java11
+
+
+
+quarkus.http.cors=true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public Uni<Void> iintotftl2(DB2Pool client, TranFinTlMODEL tranFinTlMODEL) {
+
+        TranFinTlQUERY query = new TranFinTlQUERY(tranFinTlMODEL);
+
+         String insertranfin=query.insert();
+         String insertranfin1=query.insert1();
+
+         System.out.println("QUERY sadsadasdasd=>>>>" + insertranfin);
+         System.out.println("QUERY  asd asdsadasd=>>>>" + insertranfin1);
+
+        // System.out.println("QUERY =>>>>  " + insertranfin + ";");
+
+        // return client.preparedQuery(insertranfin).execute().onItem().transform(ResultSet -> ResultSet.rowCount());
+
+        return SqlClientHelper.inTransactionUni(client, tx -> {
+            Uni<RowSet<Row>> insertOne = tx.preparedQuery(insertranfin)
+                    .execute();
+            Uni<RowSet<Row>> insertTwo = tx.preparedQuery(insertranfin1)
+                    .execute();
+    
+            return insertOne.and(insertTwo)
+                    // Ignore the results (the two ids)
+                    .onItem().ignore().andContinueWithNull();
+        });
+    }
+
+
+
+
+
+when db password exepired
+
+docker exec -it db2 bash
+su - db2inst1
+passwd
+
+
+-------------------------------------------------
+docker permision error on native image 
+
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.24/images/create?fromImage=quay.io%2Fquarkus%2Fubi-quarkus-native-image&tag=21.1-java11: dial unix /var/run/docker.sock: connect: permission denied
+
+
+solution:
+sudo usermod -aG docker $USER
+newgrp docker
+
+mvn package -Pnative
+
+docker build -f src/main/docker/Dockerfile.native -t quarkus/reactive-pg-client-quickstart .
+
+
+Then run the container using:
+
+docker run -i --rm -p 8080:8080 quarkus/reactive-pg-client-quickstart
+--------------------------------------------------------------------
+------------------------------------
+remove sudo:
+sudo usermod -aG docker $USER
+newgrp docker
+-------------------------------------------
+docker service command run every one second.
+ya command har 1 mint bad chala gi
+watch -n1 docker service ls
+--------------------------------------------
+for showing logs
+docker service logs --follow stackname_servicename
+----------------------------------------------------
+
+2 type ka ha deplayment ka 
+1rst aik docker-compose  sa is ma ma agar mujha file down karni ho ya delete karni ho to mujha aik aik karka karni para gi jabka
+2nd  stack matlab ya docker-compose sa ziada facilty data ha aik time pa sab remove kardaga  matlab ya aik swarm ma tamam services ko load karlaga or down aik sath bhi kar sakta ha
+
+for deploying in docker swarm         (option one).
+
+docker swarm init
+- first create .yml file with all the configuration in it
+- Then deploy that stack
+
+docker stack deploy -c filename.yml stackname
+- For removing the stack, simply
+docker rm stackname
+------------------------------------------------------
+for deploying in docker compose        (option two).
+docker swarm init
+- First create .yml file with all the configuration in it
+- Then deploy 
+docker-compose -f filename.yml up
+- For removing, you have to contain the container id and manually remove the container
+docker rm container id
+------------------------------------------------------
+showing running services.
+docker serivce ls
+--------------------------------
+copy folder from local to server
+scp -r docker/ admins@10.90.94.56:/home/admins/software/
+To copy all the files with same extension
+scp *.fileextension admins@10.90.94.56:/path where to copy
+sudo dpkg -i installationfile name
+----------------------------------------------------
+Copy folder from server to local
+scp -r  admins@10.90.94.56:/home/admins/software/ docker
+---------------------------------------------------------
+copy file from local to server
+scp filename admins@10.90.94.56:/home/admins/software/filename
+----------------------------------------------------
+Copy file from server to local
+scp admins@10.90.94.56:/home/admins/software/filename filename
+--------------------------------------------------------
+After this you don't have to press up arrow too many times, just staring word and then press up arrow then relavent command will appear it self.
+code ~/.profile
+-After this command you vs code profile automatically poped out.
+-Then paste this commands below accordingly.
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+source ~/.profile
+---------------------------------------------------
+Read file from command line
+cat filename
+less filename
+---------------------------------------------------
+Edit file from command line
+nano filename
+---------------------------------------------------
+For create file from command line
+touch filename
+--------------------------------------------------
+For check total numbers of containers
+docker ps | wc -l
+--------------------------------------------------
+Rename file in command line
+mv filename changeablefilename
+-------------------------------------------------
+To restart docker
+sudo systemctl restart docker
+------------------------------------------------
+To run image in docker 
+docker run -i --rm -p 8080:8080 quarkus/ahdpapi/imagename
+---------------------------------------------------------- 
+
+
+
+
+
+
